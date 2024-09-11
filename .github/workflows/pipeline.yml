@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+  NAME: 'Snyky Demo'
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,6 +27,6 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Print name
-      run: echo "Hello $NAME $BUILD. Using $JAVA_VERSION"
+      run: echo "Running a $NAME. I am telling you my secret which is ${{secrets.MY_SECRET}} Current job is $JOB, Java JDK Version is $JAVA_Version"
       env: 
-        BUILD: 'We are running build job'
+        JOB: 'We are running build job'
